@@ -3,13 +3,14 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtGui import QWindow
-import ui
+import forms
 import api
+
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.ui = ui.generador_random.Ui_NumeroRandom()
+        self.ui = forms.rand_int.Ui_NumeroRandom()
         self.ui.setupUi(self)
         self.ui.genera_button.clicked.connect(self.random_int)
 
