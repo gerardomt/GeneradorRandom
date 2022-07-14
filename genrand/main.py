@@ -2,9 +2,8 @@
 
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
-from PyQt5.QtGui import QWindow
 import forms
-import api
+from api.random_facade import genera_entero_random
 
 
 class MainWindow(QMainWindow):
@@ -18,7 +17,7 @@ class MainWindow(QMainWindow):
         inferior = self.ui.spinBox_inferior.text()
         superior = self.ui.spinBox_superior.text()
 
-        n = api.generador_random.genera_entero_random(int(inferior), int(superior))
+        n = genera_entero_random(int(inferior), int(superior))
 
         self.ui.label_respuesta.setText(str(n))
 

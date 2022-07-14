@@ -1,1 +1,1 @@
-from . import generador_random
+from . import random_facade
