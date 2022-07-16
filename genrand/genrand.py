@@ -15,24 +15,24 @@ class MainWindow(QMainWindow):
         super().__init__()
 
         logger.debug("Setup of form rand_int")
-        self.ui = forms.rand_int.Ui_NumeroRandom()
+        self.ui = forms.rand_int.Ui_RandomGeneratorWindow()
         self.ui.setupUi(self)
 
-        self.ui.genera_button.clicked.connect(self.random_int)
+        self.ui.pushButtonNumber.clicked.connect(self.random_int)
         self.ui.pushButtonList.clicked.connect(self.choose_from_list)
 
     def random_int(self):
         logger.info("random_int method has been called")
-        inferior = int(self.ui.spinBox_inferior.text())
-        superior = int(self.ui.spinBox_superior.text())
+        lower = int(self.ui.spinBoxLower.text())
+        upper = int(self.ui.spinBoxUpper.text())
 
-        logger.info(f"Generating integer between {inferior} and {superior}")
-        n = genera_entero_random(inferior, superior)
+        logger.info(f"Generating integer between {lower} and {upper}")
+        n = genera_entero_random(lower, upper)
         logger.info(f"Number generated: {n}")
-        self.ui.label_respuesta.setText(str(n))
+        self.ui.labelNumber.setText(str(n))
 
     def choose_from_list(self):
-        text = self.ui.textEdit.toPlainText()
+        text = self.ui.textEditList.toPlainText()
         rows = []
         if text:
             rows = text.split("\n")
