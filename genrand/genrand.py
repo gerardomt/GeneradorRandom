@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
 import forms
 from api.random_facade import genera_entero_random, choose_from_list
 import logging.config
@@ -26,6 +26,9 @@ class MainWindow(QMainWindow):
         lower = int(self.ui.spinBoxLower.text())
         upper = int(self.ui.spinBoxUpper.text())
 
+        if lower > upper:
+            return show_warning_messagebox("The Lower limit is greater than the Upper limit")
+
         logger.info(f"Generating integer between {lower} and {upper}")
         n = genera_entero_random(lower, upper)
         logger.info(f"Number generated: {n}")
@@ -40,6 +43,18 @@ class MainWindow(QMainWindow):
 
         choice = choose_from_list(rows)
         self.ui.labelList.setText(choice)
+
+
+def show_warning_messagebox(text):
+    msg = QMessageBox()
+    msg.setIcon(QMessageBox.Warning)
+
+    msg.setText(text)
+    msg.setWindowTitle("Warning")
+
+    msg.setStandardButtons(QMessageBox.Ok)
+
+    return msg.exec_()
 
 
 if __name__ == "__main__":
