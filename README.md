@@ -1,10 +1,17 @@
-# Generador Random
+# Random number generator and list selector
 
-Aplicación Básica que genera un número entero pseudorandom entre el
-límite inferior y superior
+Basic GUI application to generate pseudorandom 
+integers between a lower and an upper limit, or to
+choose a random line from a text.
 
-## Ejecutar
+## Run
 
 ```
-python3 main.py
+cd genrand
+python3 genrand.py
 ```
+
+### Disclaimer
+
+The main intend of this application is as practice 
+of working with the pyQt5 framework.
